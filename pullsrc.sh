@@ -20,11 +20,12 @@ arg1="${1:-}"
 # allow command fail:
 # fail_command || true
 
-source version.env	
+source version.env
+[[ -f version-local.env ]] && source version-local.env
 
 OPENSSHMIR=https://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable
 OPENSSLMIR=https://www.openssl.org/source/
-OPENSSLMIR=${GH_PROXY}https://github.com/openssl/openssl/releases/download/openssl-${OPENSSLVER}/
+OPENSSLMIR=${GH_PROXY:-}https://github.com/openssl/openssl/releases/download/openssl-${OPENSSLVER}/
 ASKPASSMIR=https://src.fedoraproject.org/repo/pkgs/openssh/x11-ssh-askpass-1.2.4.1.tar.gz/8f2e41f3f7eaa8543a2440454637f3c3
 PERLMIR=https://www.cpan.org/src/5.0
 
